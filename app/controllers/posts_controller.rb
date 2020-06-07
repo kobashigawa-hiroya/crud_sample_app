@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   def create
     post = Post.create!(post_params)
     redirect_to post, notice: "投稿しました"
-    redirect_to post
   end
 
   def edit
@@ -33,7 +32,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to post, alert: "削除しました"
+    redirect_to @post, alert: "削除しました"
   end
 
   private
