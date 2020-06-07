@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create!(post_params)
-    redirect_to post
+    redirect_to post, notice: "投稿しました"
   end
 
   def edit
@@ -27,12 +27,12 @@ class PostsController < ApplicationController
   def update
     # ***** 修正(@に注意！) *****
     @post.update!(post_params)
-    redirect_to @post
+    redirect_to @post, notice: "編集しました"
   end
 
   def destroy
     @post.destroy!
-    redirect_to @post
+    redirect_to @post, alert: "削除しました"
   end
 
   private
