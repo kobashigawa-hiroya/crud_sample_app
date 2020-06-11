@@ -18,7 +18,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to @post, notice: "投稿しました"
+      flash[:notice] = "投稿しました"
+      redirect_to @post
     else
       render :new
     end
@@ -31,7 +32,8 @@ class PostsController < ApplicationController
   def update
     # ***** 以下を修正 *****
     if @post.update(post_params)
-      redirect_to @post, notice: "編集しました"
+      flash[:notice] = "編集しました"
+      redirect_to @post
     else
       render :edit
     end
@@ -39,7 +41,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to @post, alert: "削除しました"
+    flash[:alert] = "削除しました"
+    redirect_to @post
   end
 
   private
